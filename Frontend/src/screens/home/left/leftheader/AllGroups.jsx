@@ -47,7 +47,7 @@ const AllGroups = () => {
 
   return (
     <div>
-      <div className="bg-[#151515]  text-white p-1 max-h-[86vh]">
+      <div className="bg-[#151515]  text-white p-1 h-[86vh]">
         <div className="flex flex-col gap-2 max-h-[86vh] overflow-auto">
           {filteredUsers.map((user) => (
             <div

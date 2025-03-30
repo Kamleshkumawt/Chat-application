@@ -71,6 +71,24 @@ Frontend/
 - `npm run preview`: Previews the production build.
 - `npm run lint`: Runs ESLint to check for code quality issues.
 
+## Screenshots
+
+### [Desktop Web](https://github.com/Kamleshkumawt/Chat-application)
+
+<p align="center">
+  <img src="./src/assets/LoginPage.png" alt="Desktop web: full app" width=810 />
+</p>
+<p align="center">
+  <img src="./src/assets/User-Chat Page.png" alt="Desktop web: full app" width=810 />
+</p>
+<p align="center">
+  <img src="./src/assets/Group-chat-page.png" alt="Desktop web: full app" width=810 />
+</p>
+<p align="center">
+  <img src="./src/assets/Group-Create-page.png" alt="Desktop web: full app" width=810 />
+</p>
+
+
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
