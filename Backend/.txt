@@ -1,0 +1,3 @@
+npm init -y
+npm i express express-validator mongoose cookie-parser dotenv jsonwebtoken bcrypt morgan cors
+npm i ioredis

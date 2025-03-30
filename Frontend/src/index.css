@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+html {
+  scroll-behavior: smooth;
+  word-break: break-word;
+}
+
+::selection {
+  color: oklch(var(--pc));
+  background: oklch(var(--p));
+}
+
+* {
+  scrollbar-width: thin; /* Set to 'thin' for a smaller scrollbar */
+  scrollbar-color: oklch(var(--s)) oklch(var(--p)) !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px; 
+  height: 4px; 
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(var(--p));
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: oklch(var(--s));
+  border-radius: 4px;
+}
+
+
+.form {
+  border-radius: 15px;
+  background-color: white;
+  transition: .4s ease-in-out;
+  font-family: 'Poppins', sans-serif;
+  color: #000000;
+  box-shadow: 6px 6px 12px #c5c5c5,
+              -6px -6px 12px #ffffff;
+}
+
+
+.form:hover {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  scale: 0.99;
+}
+
+.input:hover {
+  box-shadow: inset 0px 0px 0px #d1d1d1,
+            inset 0px 0px 0px #ffffff;
+  background-color: lightgrey;
+}
+
+.input:focus {
+  box-shadow: inset 0px 0px 0px #d1d1d1,
+            inset 0px 0px 0px #ffffff;
+  background-color: lightgrey;
+}
+
+.inputs:hover {
+  box-shadow: inset 3px 3px 6px #b5b5b5,
+            inset -3px -3px 6px #ffffff;
+}
+
+.inputs {
+  transition: .4s ease-in-out;
+  box-shadow: 1px 1px 3px #b5b5b5,
+             -1px -1px 3px #ffffff;
+  cursor: pointer;
+  background-color: #F0F0F0;
+}
+
+
+
+.box {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.designer-login-btn {
+  font-family: inherit;
+  background-color: #F0F0F0;
+  box-shadow: 6px 6px 12px #c5c5c5,
+              -6px -6px 12px #ffffff;
+ }
+ 
+ .designer-login-btn:hover {
+  transition: .4s ease-in-out;
+  box-shadow: 1px 1px 3px #b5b5b5,
+             -1px -1px 3px #ffffff;
+  cursor: pointer;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.box-ro {
+    position: absolute;
+    content: '';
+    height: 100px;
+    top: 76px;
+    transform: skewY(-17deg);
+    /* left: 0; */
+    width: 100%;
+    z-index: 1;
+}
+
+.box-ror {
+  position: absolute;
+    content: '';
+    height: 20px;
+    width: 210px; 
+    transform: skewY(-17deg);
+    left: 50px;
+    top: 169px;
+}
