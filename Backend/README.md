@@ -53,7 +53,7 @@ Backend/
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Kamleshkumawt/Chat-application.git
    ```
 2. Navigate to the backend directory:
    ```bash
@@ -69,7 +69,7 @@ Backend/
    ```bash
    npm run dev
    ```
-2. The backend will be available at `http://localhost:<port>`.
+2. The backend will be available at `http://localhost:3000`.
 
 ## Contributing
 Contributions are welcome! Please follow these steps:
