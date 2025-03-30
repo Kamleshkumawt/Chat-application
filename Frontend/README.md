@@ -91,8 +91,8 @@ Frontend/
 
 
 <p align="center">
-  <img src="./src/assets/User-Profile.png" alt="Desktop web: full app" width=810 />
-  <img src="./src/assets/Group-Create-page.png" alt="Desktop web: full app" width=810 />
+  <img src="./src/assets/User-Profile.png" alt="Desktop web: full app" width=250 />
+  <img src="./src/assets/Group-Create-page.png" alt="Desktop web: full app" width=560 />
 </p>
 
 
