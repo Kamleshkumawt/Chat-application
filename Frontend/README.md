@@ -78,12 +78,14 @@ Frontend/
 <p align="center">
   <img src="./src/assets/LoginPage.png" alt="Desktop web: full app" width=810 />
 </p>
+
 <p align="center">
   <img src="./src/assets/User-Chat Page.png" alt="Desktop web: full app" width=810 />
 </p>
-<p align="center">
-  <img src="./src/assets/Group-chat-page.png" alt="Desktop web: full app" width=810 />
-</p>
+
+
+<img src="./src/assets/Group-chat-page.png" alt="Desktop web: full app" width=810 />
+
 <p align="center">
   <img src="./src/assets/Group-Create-page.png" alt="Desktop web: full app" width=810 />
 </p>
@@ -97,6 +99,9 @@ Contributions are welcome! Please follow these steps:
 3. Commit your changes and push the branch.
 4. Submit a pull request.
 
-## License
+### License
 
 This project is licensed under the MIT License.
+* Demo avatars and some other graphics are from https://daisyui.com/ under [CC0 license](https://daisyui.com/). 
+* icons are from https://react-icons.github.io/react-icons/ under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html) license.
+
