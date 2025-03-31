@@ -4,6 +4,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const useSlice = createSlice({
     name: 'user',
     initialState: {
+        AllUsers: null,
         authUser: null,
         selectedUser: null,
         selectedUserGroup: null,
@@ -41,9 +42,12 @@ const useSlice = createSlice({
         setSelectedUserGroup:(state, action) => {
             state.selectedUserGroup = action.payload;
         },
+        setAllUsers:(state, action) => {
+            state.AllUsers = action.payload;
+        },
     },
 });
 
-export const {setUser, setAuthUser, setLoading, setError, setSelectedUser,setSearchQuery,setOnlineUsers, setSelectedUserGroup } = useSlice.actions;
+export const {setUser, setAuthUser, setLoading, setError, setAllUsers, setSelectedUser,setSearchQuery,setOnlineUsers, setSelectedUserGroup } = useSlice.actions;
 
 export default useSlice.reducer;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../../config/axios";
 import { setSelectedUser } from "../../../../redux/userSlice";
+import {setAllUsers} from "../../../../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Users = () => {
@@ -28,6 +29,7 @@ const Users = () => {
         .then((res) => {
           setUsers(res.data.allUsers);
           // console.log("User:", res.data.allUsers);
+          dispatch(setAllUsers(res.data.allUsers));
         })
         .catch((err) => {
           console.error(err);
