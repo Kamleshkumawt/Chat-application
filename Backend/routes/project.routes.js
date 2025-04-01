@@ -23,8 +23,18 @@ router.put('/add-user', authMiddleware.authUser,
     .custom((users) => users.every(user => typeof user === 'string')).withMessage('Each user must be a string'),
     projectControllers.addUserToProjectController);
 
+router.delete('/delete-user', authMiddleware.authUser,
+    body('projectId').isString().withMessage('Project id is required'),
+    body('users').isArray({min: 1}).withMessage('user must be an array of strings').bail()
+    .custom((users) => users.every(user => typeof user === 'string')).withMessage('Each user must be a string'),
+    projectControllers.deleteUserToProjectController);
+
 
 router.get('/get-project/:projectId', authMiddleware.authUser,
     projectControllers.getProjectByIdController);
+
+router.delete('/delete-project/:projectId', authMiddleware.authUser,
+    projectControllers.exitProjectController);
+
 
 export default router

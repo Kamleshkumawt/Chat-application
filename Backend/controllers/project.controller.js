@@ -103,3 +103,66 @@ export const getProjectByIdController = async (req, res) => {
              });
         }
 }
+
+export const deleteUserToProjectController = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+
+       const { users, projectId} = req.body;
+
+        console.log(users);
+        console.log(projectId);
+
+        const loggedInUser = await userModel.findOne({ email: req.user.email });
+        if (!loggedInUser) {
+            return res.status(401).json({ msg: 'Unauthorized user' });
+        }
+        const userId = loggedInUser._id;
+
+        const project = await projectService.deleteUserToProject({
+            projectId,
+            users,
+            userId
+        });
+        res.status(200).json({project});
+
+    } catch (err) {
+        console.error(err);
+        return res.status(400).json({ message: 'Server Error',
+            error: err.message
+         });
+        }
+}
+
+
+export const exitProjectController = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+        const { projectId } = req.params;
+
+        const loggedInUser = await userModel.findOne({ email: req.user.email });
+        if (!loggedInUser) {
+            return res.status(401).json({ msg: 'Unauthorized user' });
+        }
+        const userId = loggedInUser._id;
+        const project = await projectService.exitProject({
+            projectId,
+            userId
+        });
+        res.status(200).json({project});
+    } catch (err) {
+        console.error(err);
+        return res.status(400).json({ message: 'Server Error',
+            error: err.message
+         });
+    
+    }
+}
