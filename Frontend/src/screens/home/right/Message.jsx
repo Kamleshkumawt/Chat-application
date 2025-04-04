@@ -12,9 +12,9 @@ const Message = () => {
   // console.log("UserOnline Messages:", onlineUsers);
 
   useEffect(() => {
-    // console.log("User data or messages have changed!");
-
+    console.log("User data or messages have changed!",messages);
   }, [messages]);
+
 
   // Scroll to the bottom whenever messages change
   useEffect(() => {
@@ -40,7 +40,7 @@ const Message = () => {
         </div>
       ) : (
         <div className="p-1 h-[84.9vh] overflow-auto">
-          {messages?.map((message) => {
+          {messages?.map((message,index) => {
             const itsme = message.senderId === user._id;
             const chatName = itsme ? "chat-end" : "chat-start";
             const setColorName = itsme ? "chat-bubble-warning" : "chat-bubble-success";
@@ -50,9 +50,19 @@ const Message = () => {
               minute: "2-digit",
             });
             return (
-              <div key={message._id} className={`chat ${chatName}`}>
+              // key={message._id}
+              <div  key={`${message._id}-${index}`} className={`chat ${chatName}`}>
                 <div className={`chat-bubble ${setColorName}`}>
-                  {message.message}
+                  {/* {message.message} */}
+                  {message.type === "audio" ? (
+              <audio controls style={{ width: "100%" }}>
+                <source src={message.audioUrl} type="audio/webm" />
+                Your browser does not support the audio element.
+              </audio>
+            ) : (
+              <p>{message.message}</p>
+            )}
+            {/* llll */}
                 </div>
                 <div className="chat-footer opacity-50">{time}</div>
               </div>

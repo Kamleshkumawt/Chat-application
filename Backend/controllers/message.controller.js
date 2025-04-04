@@ -2,6 +2,7 @@ import messageModel from '../models/message.model.js';
 import userModel from '../models/user.model.js';
 import { getReceiverSocketId } from '../server.js';
 import * as messageService from '../services/message.service.js';
+import {validationResult} from 'express-validator'
 import { io } from '../server.js';
 
 // export const createMessage = async (req, res) => {
@@ -34,6 +35,10 @@ import { io } from '../server.js';
 // }
 
 export const sendMessage = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     try {
         const { message} = req.body;
         const {id:receiverId} = req.params;

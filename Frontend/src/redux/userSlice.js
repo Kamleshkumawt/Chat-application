@@ -9,6 +9,7 @@ const useSlice = createSlice({
         selectedUser: null,
         selectedUserGroup: null,
         searchQuery: "",
+        searchChatQuery :"",
         onlineUsers: null,
         loading: false,
         error: null,
@@ -45,9 +46,12 @@ const useSlice = createSlice({
         setAllUsers:(state, action) => {
             state.AllUsers = action.payload;
         },
+        setSearchChatQuery:(state, action) => {
+            state.searchChatQuery = action.payload;
+        },
     },
 });
 
-export const {setUser, setAuthUser, setLoading, setError, setAllUsers, setSelectedUser,setSearchQuery,setOnlineUsers, setSelectedUserGroup } = useSlice.actions;
+export const {setUser, setAuthUser, setLoading, setError, setAllUsers, setSelectedUser,setSearchQuery,setOnlineUsers, setSelectedUserGroup,setSearchChatQuery } = useSlice.actions;
 
 export default useSlice.reducer;

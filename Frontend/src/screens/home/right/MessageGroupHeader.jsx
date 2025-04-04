@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineDeleteOutline, MdPersonAddAlt1 } from "react-icons/md";
 import axios from "../../../config/axios";
 import { IoClose } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoIosArrowRoundBack, IoMdShareAlt } from "react-icons/io";
 import { RiVoiceprintFill } from "react-icons/ri";
-import { GoSearch } from "react-icons/go";
+import { GoChevronUp, GoSearch } from "react-icons/go";
 import { MdOutlinePersonAddAlt } from "react-icons/md";
 import { RxExit } from "react-icons/rx";
 import { SlDislike } from "react-icons/sl";
 import { ToastContainer, toast } from "react-toastify";
+import { CiSearch } from "react-icons/ci";
+import { GoChevronDown } from "react-icons/go";
+import { setSearchChatQuery } from "../../../redux/userSlice";
+
 
 const MessageGroupHeader = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,15 +24,30 @@ const MessageGroupHeader = () => {
   const [isModalOpenChangeInfoD, setIsModalOpenChangeInfoD] = useState(false);
   const [isModalOpenChange, setIsModalOpenChange] = useState(false);
   const [isModalOpenReport, setIsModalOpenReport] = useState(false);
+  const [isModalOpenSearch, setIsModalOpenSearch] = useState(false);
+  const [isModalOpenSearchUser, setIsModalOpenSearchUser] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState([]);
   const [selectedUserIds, setSelectedUserIds] = useState([]);
   // const [project, setProject] = useState(location.state.Project);
-  const { selectedUserGroup, AllUsers } = useSelector((store) => store.user);
+  const { selectedUserGroup, AllUsers} = useSelector((store) => store.user);
   const [projectDetails, setProjectDetails] = useState([]);
   const [projectInAdd, setProjectInAdd] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [inputValueD, setInputValueD] = useState("");
   const [letterCount, setLetterCount] = useState(0);
+  const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const searchHandler = (e) => {
+    dispatch(setSearchChatQuery(e.target.value)); // Redux action to update search user state
+    // console.log(e.target.value);
+  };
+  const searchHandlerUser = (e) => {
+    setSearchQuery(e.target.value); 
+  }
+  const filteredUsers = projectDetails.filter((user) =>
+    user.fullname?.toLowerCase().includes(searchQuery?.toLowerCase() || "")
+  );
 
   // console.log("projectDetails", projectDetails);
   // console.log("AllUsers", AllUsers);
@@ -165,6 +184,18 @@ const MessageGroupHeader = () => {
       });
   }
 
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: document.title,
+        text: 'Check out this awesome page!',
+        url: window.location.href,
+      })
+    } else {
+      alert('Share functionality is not supported in this browser.');
+    }
+  };
+
   // console.log('ProjectInAdd',projectInAdd);
 
   useEffect(() => {
@@ -271,11 +302,14 @@ const MessageGroupHeader = () => {
                   <RiVoiceprintFill />
                   <span className="text-white text-sm"> Voice Chat </span>
                 </div>
-                <div className="border border-gray-500 p-2 px-2 text-green-400 rounded-lg flex flex-col justify-center items-center cursor-pointer">
+                <div onClick={()=> {
+                  setIsModalOpenSearch(true),
+                  setIsModalOpenSettings(false)
+                }} className="border border-gray-500 p-2 px-2 text-green-400 rounded-lg flex flex-col justify-center items-center cursor-pointer">
                   <GoSearch />
                   <span className="text-white text-sm">Search</span>
                 </div>
-                <div className="border border-gray-500 p-2 px-3 text-green-400 rounded-lg flex flex-col justify-center items-center cursor-pointer">
+                <div onClick={handleShare} className="border border-gray-500 p-2 px-3 text-green-400 rounded-lg flex flex-col justify-center items-center cursor-pointer">
                   <IoMdShareAlt />
                   <span className="text-white text-sm">Share</span>
                 </div>
@@ -299,7 +333,7 @@ const MessageGroupHeader = () => {
                   <span> {projectDetails?.length} </span>
                   members
                 </h1>
-                <div className="cursor-pointer">
+                <div className="cursor-pointer" onClick={()=> setIsModalOpenSearchUser(true)} >
                   <GoSearch />
                 </div>
               </div>
@@ -313,7 +347,7 @@ const MessageGroupHeader = () => {
                 Add members
               </div>
               <div className="h-50 overflow-auto">
-                {projectDetails.map((project) => {
+                {filteredUsers.map((project) => {
                   return (
                     <div
                       key={project._id}
@@ -369,6 +403,52 @@ const MessageGroupHeader = () => {
           </div>
         </div>
       )}
+
+      {isModalOpenSearchUser && (
+        <div className="fixed flex top-85 right-1 ">
+        <div className="flex bg-[#2c2c31] w-80">
+        <div className="w-full flex hover:border-b border-b  active:border-green-400 bg-[#2c2c31] text-[#f4f4f4] items-center rounded pl-2">
+          <CiSearch className="rotate-90 cursor-pointer" />
+          <input
+            type="text"
+            onChange={searchHandlerUser}
+            className="w-full p-1 outline-none cursor-pointer"
+            placeholder="Search whitIn chat..."
+            />
+        </div> 
+        <div className="hover:text-red-400 cursor-pointer p-2" onClick={()=> setIsModalOpenSearchUser(false)}
+         >
+          <IoClose/>         
+         </div>
+        </div>
+        </div>
+      )}
+
+      {isModalOpenSearch && (
+        <div className="fixed flex right-1   bg-opacity-50">
+          <div className="flex items-center gap-5">
+         <div className="w-full flex hover:border-b border-b  active:border-green-400 bg-[#2c2c31] text-[#f4f4f4] items-center rounded pl-2">
+          <CiSearch className="rotate-90 cursor-pointer" />
+          <input
+            type="text"
+            onChange={searchHandler}
+            className="w-full p-1 outline-none cursor-pointer"
+            placeholder="Search whitIn chat..."
+          />
+        </div> 
+        <div className="flex gap-5">
+        <GoChevronUp className="cursor-pointer " />
+        <GoChevronDown className="cursor-pointer" />
+
+        </div>
+        <div className="hover:text-red-400 cursor-pointer p-2" onClick={()=> setIsModalOpenSearch(false)}
+         >
+          <IoClose/>         
+         </div>
+          </div>
+        </div>
+      )}
+
 
       {isModalOpenSettingsInfo && (
         <div
@@ -508,7 +588,7 @@ const MessageGroupHeader = () => {
             </div>
             <div className="flex justify-end mt-4">
               <button
-                onClick={deleteCollaborators}
+                onClick={() => deleteCollaborators()}
                 className="px-4 py-2 bg-gray-400 hover:bg-red-600 rounded-md cursor-pointer"
               >
                 delete

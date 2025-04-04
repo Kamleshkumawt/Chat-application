@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import GroupChat from "./GroupChat";
 import MessageGroup from "../../right/MesaageGroup";
-import Iosearch from "./Iosearch";
+import IoSearch from "./Iosearch";
 
 
 
@@ -26,7 +26,7 @@ const GroupHeader = () => {
           </div>
         </div>
       </div>
-      <Iosearch/>
+      <IoSearch/>
     </div>
     {isModalOpen && (
     <div className="fixed w-full inset-0 flex items-center ml-14 z-50">

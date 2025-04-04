@@ -3,6 +3,7 @@ import { MdGroupAdd } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import axios from "../../../../config/axios";
+import IoSearch from "./Iosearch";
 
 const GroupChat = ({ setIsModalOpen }) => {
   const [isModalOpen, setIsModalOpenAdd] = useState(false);
@@ -48,14 +49,7 @@ const GroupChat = ({ setIsModalOpen }) => {
             </div>
           </div>
         </div>
-        <div className="w-full flex hover:border-b border-b  active:border-green-400 bg-[#404040] text-[#f4f4f4] items-center rounded pl-2">
-          <CiSearch className="rotate-90" />
-          <input
-            type="text"
-            className="w-full p-1 outline-none"
-            placeholder="Search or start a new chat..."
-          />
-        </div>
+        <IoSearch/>
       </div>
 
       {isModalOpen && (

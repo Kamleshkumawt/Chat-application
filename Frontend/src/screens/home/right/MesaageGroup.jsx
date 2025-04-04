@@ -4,6 +4,7 @@ import { UserContext } from "../../../context/User.context";
 import SendGroupMessages from "./SendGroupMessages";
 // import RightHeader from "./RightHeader";
 import MessageGroupHeader from "./MessageGroupHeader";
+import { useSelector } from "react-redux";
 //import SendMessage from "./SendMessage";
 
 
@@ -11,8 +12,10 @@ const MessageGroup = () => {
   const { messages, loading , setMessages } = UseGetMessage();
   const { user } = useContext(UserContext);
   const messagesEndRef = useRef(null);
+  const { searchChatQuery } = useSelector((store) => store.user)
   // const {onlineUsers} = useSelector(store=>store.user);
 
+  // console.log('searchChatQuery',searchChatQuery);
 
   // console.log("UserOnline Messages:", onlineUsers);
 
@@ -43,7 +46,7 @@ const MessageGroup = () => {
       {messages.length === 0 ? (
         <div className="h-[84.9vh] flex items-center justify-center overflow-auto">
           <div className="skeleton h-full w-full flex items-center justify-center ">
-            <p>Let's start chat</p>
+            <p>Let's start Group-chat</p>
           </div>
         </div>
       ) : (
