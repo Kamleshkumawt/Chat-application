@@ -194,9 +194,10 @@ Below are all PNG images used in the project (located in `client/src/assets/`):
 
 <p align="center">
    <img src="Frontend/src/assets/Group-chat-page.png" alt="Group Chat Background" width="300" />
-   <img src="Frontend/src/assets/Group-Create.png" alt="Group Background" width="300" />
+   <img src="Frontend/src/assets/Group-Create-page.png" alt="Group Background" width="300" />
    <img src="Frontend/src/assets/LoginPage.png" alt="Login  Background" width="300" />
    <img src="Frontend/src/assets/User-Chat Page.png" alt="User Details" width="300" />
+   <img src="Frontend/src/assets/User-Profile.png" alt="User Profile" width="300" />
    <img src="Frontend/src/assets/User-Profile.png" alt="User Profile" width="300" />
 </p>
 
