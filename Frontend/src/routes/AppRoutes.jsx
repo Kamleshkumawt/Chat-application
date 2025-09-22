@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Route, BrowserRouter, Routes, Navigate} from 'react-router-dom';
 import Home from '../screens/home/Home'
 import Login from '../screens/components/Login'
 import Register from '../screens/components/Register'
@@ -12,6 +12,8 @@ const AppRoutes = () => {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<UserAuth><Register /> </UserAuth>} />
+
+        <Route path='*' element={<Navigate to="/login" />} />
     </Routes>
     </BrowserRouter>
   )
