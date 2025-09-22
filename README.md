@@ -187,37 +187,21 @@ Developed by [Kamlesh Kumawat](https://github.com/Kamleshkumawt)
 
 ---
 
-## Assets
 
-All static images and icons used in the application are stored in the `assets` folder. You can use these images for user avatars, group icons, backgrounds, and other UI elements.
+## Image Assets
 
-### How to Use Images
+Below are all PNG images used in the project (located in `client/src/assets/`):
 
-#### Frontend (React)
+<p align="center">
+   <img src="Frontend/src/assets/Group-chat-page.png" alt="Group Chat Background" width="300" />
+   <img src="Frontend/src/assets/Group-Create.png" alt="Group Background" width="300" />
+   <img src="Frontend/src/assets/LoginPage.png" alt="Login  Background" width="300" />
+   <img src="Frontend/src/assets/User-Chat Page.png" alt="User Details" width="300" />
+   <img src="Frontend/src/assets/User-Profile.png" alt="User Profile" width="300" />
+</p>
 
-To use an image from the assets folder in your React components:
+You can use these images for documentation, UI, or branding purposes.
 
-```jsx
-import avatarImg from '../assets/LoginPage.png'; // adjust path as needed
-
-<img src={avatarImg} alt="Avatar" />
-```
-
-Or, if using public assets (e.g., in `public/assets`):
-
-```jsx
-<img src="/assets/User-profile.png" alt="userProfile" />
-```
-
-#### Backend
-
-For serving static images from the backend, ensure you set up static middleware in Express:
-
-```js
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-```
-
-Then you can reference images via URLs like `http://localhost:3000/assets/avatar.png`.
 
 ### List of Images
 
